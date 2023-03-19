@@ -13,6 +13,7 @@ const alchemy = new Alchemy(settings);
 
 // defining the Express app
 const app = express();
+app.use(express.static("public"));
 
 // using bodyParser to parse JSON bodies into JS objects
 app.use(bodyParser.json());
@@ -36,7 +37,7 @@ app.get("/", (req, res, next) => {
     "Access-Control-Allow-Headers",
     "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
   );
-  res.send({ detail: "ok" });
+  res.sendFile("index.html", { root: path.join(__dirname, "public") });
 });
 
 // defining an endpoint to get the NFTs
@@ -102,9 +103,15 @@ app.get("/api", async (req, res, next) => {
   Nfts(owner);
 });
 
+/*
 // starting the server
 app.listen(process.env.API_PORT, () => {
   console.log(`listening on port ${process.env.API_PORT}`);
+});
+*/
+
+app.listen(process.env.API_PORT || 3000, () => {
+  console.log("Server is running.");
 });
 
 module.exports = app;
