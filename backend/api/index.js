@@ -24,7 +24,7 @@ app.use(cors());
 // defining an endpoint to get the NFTs
 app.get("/", (req, res, next) => {
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
-
+  /*
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader("Access-Control-Allow-Origin", "*");
   // another common pattern
@@ -37,6 +37,7 @@ app.get("/", (req, res, next) => {
     "Access-Control-Allow-Headers",
     "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
   );
+  */
   res.sendFile("index.html", { root: path.join(__dirname, "public") });
 });
 
@@ -47,7 +48,7 @@ app.get("/api", async (req, res, next) => {
   const owner = req.query.owner;
 
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
-
+  /*
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader("Access-Control-Allow-Origin", "*");
   // another common pattern
@@ -60,7 +61,7 @@ app.get("/api", async (req, res, next) => {
     "Access-Control-Allow-Headers",
     "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
   );
-
+  */
   async function Nfts(owner) {
     try {
       //let _nfts = []; //store the complete data of NFTs returned by alchemy SDK, for debug purpose
