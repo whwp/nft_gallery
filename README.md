@@ -24,6 +24,7 @@ Create a .env file in backend project directory. Sample .env file as below:
 
 ```sh
 ALCHEMY_API_KEY=YOUR_ALCHEMY_API_KEY
+API_PORT=3001
 ```
 
 ## Deployment of the demo
