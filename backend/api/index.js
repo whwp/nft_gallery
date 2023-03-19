@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // defining an endpoint to get the NFTs
-app.get("/", async (req, res, next) => {
+app.get("/api", async (req, res, next) => {
   const owner = req.query.owner;
   async function Nfts(owner) {
     try {
@@ -53,6 +53,7 @@ app.get("/", async (req, res, next) => {
       //console.log("got NFTs: ");
       //console.log(_nfts);
       //console.log(nfts);
+      res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
       res.send(nfts);
     } catch (error) {
       console.log(error);
