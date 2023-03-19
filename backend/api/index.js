@@ -106,3 +106,5 @@ app.get("/api", async (req, res, next) => {
 app.listen(process.env.API_PORT, () => {
   console.log(`listening on port ${process.env.API_PORT}`);
 });
+
+module.exports = app;
