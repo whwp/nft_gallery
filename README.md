@@ -1,6 +1,6 @@
 # NFT Gallery
 
-Demo:
+Demo: https://nft-gallery-frontend.vercel.app/
 
 - Developed a full stack application to show the NFTs in a wallet on Ethereum blockchain, using JavaScript
 - Implemented the client side using React, and server side using Node.js and Express
