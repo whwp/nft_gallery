@@ -23,9 +23,12 @@ export default function Result({
     };
 
     try {
+      console.log("port = " + process.env.REACT_APP_API_PORT);
       const url =
         process.env.REACT_APP_BACKEND_SERVER_URL +
-        "/api:" + process.env.PORT + ?" +
+        ":" +
+        process.env.REACT_APP_API_PORT +
+        "/api?" +
         new URLSearchParams({
           owner: owner,
         });

@@ -22,7 +22,25 @@ app.use(cors());
 
 // defining an endpoint to get the NFTs
 app.get("/api", async (req, res, next) => {
+  console.log("db point");
+  console.log(req);
   const owner = req.query.owner;
+
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  // another common pattern
+  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+  );
+
   async function Nfts(owner) {
     try {
       //let _nfts = []; //store the complete data of NFTs returned by alchemy SDK, for debug purpose
@@ -53,7 +71,7 @@ app.get("/api", async (req, res, next) => {
       //console.log("got NFTs: ");
       //console.log(_nfts);
       //console.log(nfts);
-      res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+
       res.send(nfts);
     } catch (error) {
       console.log(error);
@@ -66,6 +84,6 @@ app.get("/api", async (req, res, next) => {
 });
 
 // starting the server
-app.listen(process.env.PORT, () => {
-  console.log(`listening on port ${process.env.PORT}`);
+app.listen(process.env.API_PORT, () => {
+  console.log(`listening on port ${process.env.API_PORT}`);
 });
