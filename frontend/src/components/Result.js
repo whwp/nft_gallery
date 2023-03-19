@@ -29,7 +29,7 @@ export default function Result({
         new URLSearchParams({
           owner: owner,
         });
-      console.log("fetch: " + url);
+      //console.log("fetch: " + url);  //for debug
       const response = await fetch(url, requestOptions);
       console.log("Response status: " + response.status);
       const res = await response.json();
