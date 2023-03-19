@@ -25,11 +25,11 @@ export default function Result({
     try {
       const url =
         process.env.REACT_APP_BACKEND_SERVER_URL +
-        "/api?" +
+        "/api:" + process.env.PORT + ?" +
         new URLSearchParams({
           owner: owner,
         });
-      //console.log("fetch: " + url);
+      console.log("fetch: " + url);
       const response = await fetch(url, requestOptions);
       console.log("Response status: " + response.status);
       const res = await response.json();
